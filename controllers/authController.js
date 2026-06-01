@@ -35,7 +35,8 @@ const createSendToken = (user, statusCode, res, req) => {
     ),
 
     httpOnly: true,
-    secure: req.secure || req.headers('x-forwarded-proto') === 'https',
+    // secure: req.secure || req.headers('x-forwarded-proto') === 'https',
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
   });
 
   // Remove password from output
@@ -107,7 +108,8 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 3) If everything ok,send token to client
-  createSendToken(user, 200, req, res);
+  // createSendToken(user, 200, req, res);
+  createSendToken(user, 200, res, req);
 
   /*
   const token = signToken(user._id);

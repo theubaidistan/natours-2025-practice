@@ -9,7 +9,7 @@
     "ratingsQuantity": 37,
     "price": 397,
     "summary": "Breathtaking hike through the Canadian Banff National Park",
-    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "description": "Discover the majestic beauty of Banff National Park on this unforgettable guided hiking adventure. Immerse yourself in pristine wilderness, crystal-clear lakes, and towering mountain peaks as our expert guides lead you through scenic trails designed for all skill levels. Enjoy daily nature talks, wildlife spotting opportunities, and evening campfires under the stars. Perfect for nature enthusiasts seeking relaxation and adventure in one of Canada's most stunning landscapes.\nThis tour offers comfortable accommodations, delicious meals featuring local ingredients, and transportation between trailheads. Learn about the park's unique ecology and conservation efforts while creating memories that will last a lifetime. Whether you're a first-time hiker or experienced trekker, this journey will leave you refreshed and inspired by the wonders of the Canadian Rockies.",
     "imageCover": "tour-1-cover.jpg",
     "images": ["tour-1-1.jpg", "tour-1-2.jpg", "tour-1-3.jpg"],
     "startDates": ["2021-04-25,10:00", "2021-07-20,10:00", "2021-10-05,10:00"]
@@ -24,7 +24,7 @@
     "ratingsQuantity": 23,
     "price": 497,
     "summary": "Exploring the jaw-dropping US east coast by foot and by boat",
-    "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "description": "Embark on an extraordinary coastal journey along the breathtaking US East Coast, combining scenic hiking trails with relaxing boat excursions. Explore charming seaside towns, hidden coves, and dramatic cliffs while learning about marine life and local history from knowledgeable guides. Each day brings new adventures, from kayaking in calm bays to discovering historic lighthouses and enjoying fresh seafood dinners.\nThis carefully crafted itinerary balances physical activity with plenty of downtime for beach relaxation and photography. Our small group ensures personalized attention and a friendly atmosphere. Experience the magic of the Atlantic coastline, create lasting friendships, and return home with unforgettable stories and a deeper appreciation for America's natural treasures.",
     "imageCover": "tour-2-cover.jpg",
     "images": ["tour-2-1.jpg", "tour-2-2.jpg", "tour-2-3.jpg"],
     "startDates": ["2021-06-19,10:00", "2021-07-20,10:00", "2021-08-18,10:00"]
@@ -39,7 +39,7 @@
     "ratingsQuantity": 13,
     "price": 997,
     "summary": "Exciting adventure in the snow with snowboarding and skiing",
-    "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!\nDolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, exercitation ullamco laboris nisi ut aliquip. Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
+    "description": "Experience the thrill of winter sports in world-class mountain resorts during this action-packed snow adventure. Master your skiing and snowboarding skills with professional instructors, explore pristine powder slopes, and enjoy breathtaking alpine scenery. The tour includes access to multiple resorts, evening entertainment, and cozy lodge accommodations with hot tubs and fireplaces.\nChallenge yourself on varied terrain suitable for different experience levels while making new friends who share your passion for winter sports. Learn essential safety techniques and avalanche awareness. This high-energy trip is perfect for adventure seekers looking to maximize their time in the mountains and create epic memories on the slopes.",
     "imageCover": "tour-3-cover.jpg",
     "images": ["tour-3-1.jpg", "tour-3-2.jpg", "tour-3-3.jpg"],
     "startDates": ["2022-01-05,10:00", "2022-02-12,10:00", "2023-01-06,10:00"]
@@ -53,8 +53,8 @@
     "ratingsAverage": 4.6,
     "ratingsQuantity": 54,
     "price": 1197,
-    "summary": "Living the life of Wanderlust in the US' most beatiful cities",
-    "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat lorem ipsum dolor sit amet.\nConsectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat!",
+    "summary": "Living the life of Wanderlust in the US' most beautiful cities",
+    "description": "Immerse yourself in the vibrant energy of America's most iconic cities on this exciting urban exploration tour. Discover world-class museums, historic landmarks, diverse neighborhoods, and incredible food scenes as you travel between major metropolitan areas. Local guides will share fascinating stories and insider tips while you enjoy comfortable transportation and carefully selected accommodations.\nThis tour strikes the perfect balance between structured sightseeing and free time for personal discoveries. Experience bustling city life, charming districts, and cultural attractions that define each destination. Connect with fellow travelers who share your love for city adventures and return home inspired by the rich tapestry of American urban culture.",
     "imageCover": "tour-4-cover.jpg",
     "images": ["tour-4-1.jpg", "tour-4-2.jpg", "tour-4-3.jpg"],
     "startDates": ["2021-03-11,10:00", "2021-05-02,10:00", "2021-06-09,10:00"]
@@ -69,7 +69,7 @@
     "ratingsQuantity": 19,
     "price": 1497,
     "summary": "Breathing in Nature in America's most spectacular National Parks",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!",
+    "description": "Journey through some of America's most magnificent national parks on this comprehensive camping adventure. From towering redwoods to dramatic canyons and pristine alpine lakes, experience the incredible diversity of landscapes that make these protected areas so special. Professional guides will help you navigate trails, identify wildlife, and understand the geological forces that shaped these natural wonders.\nEnjoy comfortable tent camping with all necessary equipment provided, along with hearty meals cooked over the campfire. This tour combines moderate hiking with plenty of opportunities for photography, stargazing, and peaceful reflection in nature. Create meaningful connections with the environment and fellow adventurers while exploring the crown jewels of the American wilderness.",
     "imageCover": "tour-5-cover.jpg",
     "images": ["tour-5-1.jpg", "tour-5-2.jpg", "tour-5-3.jpg"],
     "startDates": ["2021-08-05,10:00", "2022-03-20,10:00", "2022-08-12,10:00"]
@@ -84,22 +84,22 @@
     "ratingsQuantity": 28,
     "price": 2997,
     "summary": "Surfing, skating, parajumping, rock climbing and more, all in one tour",
-    "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\nVoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur!",
+    "description": "For thrill-seekers and active travelers, this ultimate adventure tour combines multiple high-energy sports in spectacular locations. Master surfing waves along beautiful coastlines, conquer challenging rock climbing routes, experience the rush of paragliding, and explore urban skate parks. Each activity is led by certified instructors who prioritize safety while pushing your limits.\nThis comprehensive itinerary offers progressive skill development and a supportive group environment. Between adventures, enjoy downtime at luxury resorts, beach relaxation, and cultural experiences. The small group size ensures personalized instruction and maximum excitement. Return home with new skills, incredible memories, and stories of pushing beyond your comfort zone.",
     "imageCover": "tour-6-cover.jpg",
     "images": ["tour-6-1.jpg", "tour-6-2.jpg", "tour-6-3.jpg"],
     "startDates": ["2021-07-19,10:00", "2021-09-06,10:00", "2022-03-18,10:00"]
   },
   {
     "id": 6,
-    "name": "The Wine Taster",
+    "name": "The Grape Taster",
     "duration": 5,
     "maxGroupSize": 8,
     "difficulty": "easy",
     "ratingsAverage": 4.5,
     "ratingsQuantity": 35,
     "price": 1997,
-    "summary": "Exquisite wines, scenic views, exclusive barrel tastings,  and much more",
-    "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "summary": "Exquisite grapes, scenic views, exclusive barrel tastings, and much more",
+    "description": "Indulge your senses on this luxurious grape tasting journey through renowned vineyards and picturesque grape country. Visit prestigious graperies for private tours, barrel tastings, and gourmet food pairings while learning about viticulture from passionate grapemakers. Enjoy stunning vineyard views, beautiful tasting rooms, and opportunities to purchase exclusive grapes.\nThis sophisticated experience includes comfortable transportation between locations, elegant accommodations, and carefully curated meals highlighting regional cuisine. Perfect for grape enthusiasts and curious beginners alike, the tour offers both educational elements and pure enjoyment. Create lasting memories while expanding your knowledge and appreciation of fine grapes.",
     "imageCover": "tour-7-cover.jpg",
     "images": ["tour-7-1.jpg", "tour-7-2.jpg", "tour-7-3.jpg"],
     "startDates": ["2021-02-12,10:00", "2021-04-14,10:00", "2021-09-01,10:00"]
@@ -114,7 +114,7 @@
     "ratingsQuantity": 28,
     "price": 2997,
     "summary": "The most remote and stunningly beautiful places for seeing the night sky",
-    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "description": "Escape light pollution and discover the wonders of the universe on this specialized stargazing adventure. Visit remote locations renowned for crystal-clear night skies, where you'll observe planets, constellations, and the Milky Way in breathtaking detail. Expert astronomers will guide you through telescope observations and share fascinating insights about celestial phenomena.\nThe tour includes comfortable glamping accommodations, daytime activities exploring natural wonders, and educational workshops. Capture stunning night photography and learn techniques from professionals. This unique experience appeals to both astronomy enthusiasts and those seeking peaceful connection with nature. Return home with a deeper appreciation for the cosmos.",
     "imageCover": "tour-8-cover.jpg",
     "images": ["tour-8-1.jpg", "tour-8-2.jpg", "tour-8-3.jpg"],
     "startDates": ["2021-03-23,10:00", "2021-10-25,10:00", "2022-01-30,10:00"]
@@ -129,7 +129,7 @@
     "ratingsQuantity": 33,
     "price": 1497,
     "summary": "Enjoy the Northern Lights in one of the best places in the world",
-    "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!\nDolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, exercitation ullamco laboris nisi ut aliquip. Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
+    "description": "Witness the magical dance of the Northern Lights in prime viewing locations during this short but unforgettable winter escape. Professional guides monitor weather conditions and solar activity to maximize your chances of seeing this natural phenomenon. Enjoy cozy accommodations, warm winter gear, and hot drinks while waiting for the spectacular light show.\nDaytime activities include cultural experiences, snowshoeing, and learning about indigenous traditions related to the aurora. The small group size creates an intimate atmosphere perfect for sharing this bucket-list experience. This tour offers the perfect combination of comfort and adventure for those dreaming of seeing nature's most beautiful light display.",
     "imageCover": "tour-9-cover.jpg",
     "images": ["tour-9-1.jpg", "tour-9-2.jpg", "tour-9-3.jpg"],
     "startDates": ["2021-12-16,10:00", "2022-01-16,10:00", "2022-12-12,10:00"]

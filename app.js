@@ -25,6 +25,10 @@ const app = express();
 
 app.enable('trust proxy');
 
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 

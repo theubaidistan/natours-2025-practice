@@ -14,7 +14,8 @@ const signToken = (id) => {
   });
 };
 
-const createSendToken = (user, statusCode, res, req) => {
+// const createSendToken = (user, statusCode, res, req) => {
+const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user._id);
   /*
   const cookieOptions = {
@@ -36,7 +37,10 @@ const createSendToken = (user, statusCode, res, req) => {
 
     httpOnly: true,
     // secure: req.secure || req.headers('x-forwarded-proto') === 'https',
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+    // secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+    secure:
+      process.env.NODE_ENV === 'production' &&
+      (req.secure || req.headers['x-forwarded-proto'] === 'https'),
   });
 
   // Remove password from output
@@ -68,6 +72,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   await new Email(newUser, url).sendWelcome();
 
+  // createSendToken(newUser, 201, req, res);
   createSendToken(newUser, 201, req, res);
 
   /*
@@ -103,13 +108,27 @@ exports.login = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email }).select('+password');
   // console.log(user);
 
+  // console.log('Email:', email);
+  // console.log('User found:', !!user);
+
+  // if (user) {
+  //   console.log('DB email:', user.email);
+  //   console.log('Hash:', user.password);
+  // }
+
+  // const isCorrect = await user.correctPassword(password, user.password);
+
+  // console.log('Entered password:', password);
+  // console.log('Password matches:', isCorrect);
+
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError('Incorrect email or password', 401));
   }
 
   // 3) If everything ok,send token to client
   // createSendToken(user, 200, req, res);
-  createSendToken(user, 200, res, req);
+  // createSendToken(user, 200, res, req);
+  createSendToken(user, 200, req, res);
 
   /*
   const token = signToken(user._id);

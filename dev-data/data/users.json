@@ -11,7 +11,7 @@
   {
     "_id": "5c8a1dfa2f8fb814b56fa181",
     "name": "Louis Browning",
-    "email": "loulou@example.com",
+    "email": "louis@example.com",
     "role": "user",
     "active": true,
     "photo": "user-2.jpg",
@@ -20,7 +20,7 @@
   {
     "_id": "5c8a1e1a2f8fb814b56fa182",
     "name": "Samuel Hart",
-    "email": "sophie@example.com",
+    "email": "samuel@example.com",
     "role": "user",
     "active": true,
     "photo": "user-3.jpg",
@@ -29,7 +29,7 @@
   {
     "_id": "5c8a1ec62f8fb814b56fa183",
     "name": "Aidan Cornell",
-    "email": "ayls@example.com",
+    "email": "aidan@example.com",
     "role": "user",
     "active": true,
     "photo": "user-4.jpg",
@@ -47,7 +47,7 @@
   {
     "_id": "5c8a1f4e2f8fb814b56fa185",
     "name": "Jacob Hardy",
-    "email": "jennifer@example.com",
+    "email": "jacob@example.com",
     "role": "guide",
     "active": true,
     "photo": "user-6.jpg",
@@ -56,7 +56,7 @@
   {
     "_id": "5c8a201e2f8fb814b56fa186",
     "name": "Kevin Morrison",
-    "email": "kate@example.com",
+    "email": "kevin@example.com",
     "role": "guide",
     "active": true,
     "photo": "user-7.jpg",
@@ -65,7 +65,7 @@
   {
     "_id": "5c8a20d32f8fb814b56fa187",
     "name": "Elijah Stout",
-    "email": "eliana@example.com",
+    "email": "elijah@example.com",
     "role": "user",
     "active": true,
     "photo": "user-8.jpg",
@@ -101,7 +101,7 @@
   {
     "_id": "5c8a22c62f8fb814b56fa18b",
     "name": "Michael Myles",
-    "email": "miyah@example.com",
+    "email": "michael@example.com",
     "role": "lead-guide",
     "active": true,
     "photo": "user-12.jpg",
@@ -119,7 +119,7 @@
   {
     "_id": "5c8a23c82f8fb814b56fa18d",
     "name": "Liam Wilson",
-    "email": "laura@example.com",
+    "email": "liam@example.com",
     "role": "user",
     "active": true,
     "photo": "user-14.jpg",
@@ -137,7 +137,7 @@
   {
     "_id": "5c8a24282f8fb814b56fa18f",
     "name": "Isaac Kirkland",
-    "email": "isabel@example.com",
+    "email": "isaac@example.com",
     "role": "user",
     "active": true,
     "photo": "user-16.jpg",
@@ -173,7 +173,7 @@
   {
     "_id": "5c8a24a02f8fb814b56fa193",
     "name": "Lucas Brown",
-    "email": "lisa@example.com",
+    "email": "lucas@example.com",
     "role": "user",
     "active": true,
     "photo": "user-20.jpg",

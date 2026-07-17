@@ -166,7 +166,7 @@ exports.logout = (req, res) => {
 */
 
 exports.logout = (req, res) => {
-  res.cookie('jwt', 'loggedout', {
+  res.clearCookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
     secure: process.env.NODE_ENV === 'development',

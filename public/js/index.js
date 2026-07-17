@@ -10,12 +10,7 @@ import { showAlert } from './alerts';
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
-// const userDataForm = document.querySelector('.form-user-data');
-const userDataForm = document
-  .querySelector('.form-user-data')
-  .addEventListener('submit', () => {
-    console.log('SUBMIT FIRED');
-  });
+const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
 

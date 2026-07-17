@@ -54,6 +54,10 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
+    metadata: {
+      price: tour.price.toString(),
+    },
+
     line_items: [
       {
         price_data: {
@@ -94,14 +98,19 @@ exports.createBookingCheckout = async (req, res, next) => {
 */
 
 const createBookingCheckout = async (session) => {
+  console.log(session);
   const tour = session.client_reference_id;
   const user = (await User.findOne({ email: session.customer_email })).id;
   // const price = session.display_items[0].amount / 100;
   const price = Number(session.metadata.price);
+  console.log(user);
+  console.log(tour);
+  console.log(price);
   await Booking.create({ tour, user, price });
 };
 
 exports.webhookCheckout = async (req, res, next) => {
+  console.log('WEBHOOK RECEIVED');
   const signature = req.headers['stripe-signature'];
 
   let event;
@@ -111,13 +120,17 @@ exports.webhookCheckout = async (req, res, next) => {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET,
     );
+
+    console.log(event.type);
   } catch (err) {
+    console.log(err);
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
   if (event.type === 'checkout.session.completed')
     // createBookingCheckout(event.data.object);
-    await createBookingCheckout(event.data.object);
+    console.log('Creating booking...');
+  await createBookingCheckout(event.data.object);
 
   res.status(200).json({ received: true });
 };

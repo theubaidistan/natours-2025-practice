@@ -42,8 +42,11 @@ const createSendToken = (user, statusCode, req, res) => {
     //   process.env.NODE_ENV === 'production' &&
     //   (req.secure || req.headers['x-forwarded-proto'] === 'https'),
     secure:
-      process.env.NODE_ENV === 'development' &&
-      (req.secure || req.headers['x-forwarded-proto'] === 'https'),
+      process.env.NODE_ENV === 'development' ||
+      process.env.NODE_ENV ===
+        'production'(
+          req.secure || req.headers['x-forwarded-proto'] === 'https',
+        ),
   });
 
   // Remove password from output

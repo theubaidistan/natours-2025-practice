@@ -173,7 +173,7 @@ exports.logout = (req, res) => {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
     secure: process.env.NODE_ENV === 'development',
-    sameSite: 'lax',
+    sameSite: 'none',
     path: '/',
   });
 

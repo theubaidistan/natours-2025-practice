@@ -23,6 +23,8 @@ const viewRouter = require('./routes/viewRoutes');
 // Start express app
 const app = express();
 
+app.set('trust proxy', 1);
+
 app.enable('trust proxy');
 
 if (process.env.NODE_ENV === 'production') {

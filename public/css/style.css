@@ -1444,6 +1444,37 @@ body {
   font-size: 1.6rem;
 }
 
+.form__status {
+  margin: -1rem 0 2rem 9.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.form__status--neutral {
+  color: #777;
+}
+
+.form__status--ready {
+  color: #2e9e59;
+}
+
+.form__status--loading {
+  color: #777;
+}
+
+.form__status--success {
+  color: #2e9e59;
+}
+
+.form__status--error {
+  color: #eb4d4b;
+}
+
+[data-profile-submit]:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
 .form__user-photo {
   height: 7.5rem;
   width: 7.5rem;

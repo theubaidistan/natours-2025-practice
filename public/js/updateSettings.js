@@ -54,8 +54,16 @@ export const updateSettings = async (data, type) => {
 
     if (res.data.status === 'success') {
       showAlert('success', `${type.toUpperCase()} updated successfully!`);
+      return true;
     }
+
+    return false;
   } catch (err) {
-    showAlert('error', err.response.data.message);
+    showAlert(
+      'error',
+      err.response?.data?.message ||
+        'Unable to update your settings. Please try again.',
+    );
+    return false;
   }
 };

@@ -54,20 +54,72 @@ if (signupForm) {
 
 if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
-if (userDataForm)
-  userDataForm.addEventListener('submit', (e) => {
+if (userDataForm) {
+  const photoInput = document.getElementById('photo');
+  const photoPreview = document.querySelector('.form__user-photo');
+  const profileStatus = document.querySelector('[data-profile-status]');
+  const profileSubmit = document.querySelector('[data-profile-submit]');
+  let previewUrl;
+
+  const setProfileStatus = (message, type = 'neutral') => {
+    profileStatus.textContent = message;
+    profileStatus.className = `form__status form__status--${type}`;
+  };
+
+  photoInput.addEventListener('change', () => {
+    const [file] = photoInput.files;
+    if (!file) {
+      setProfileStatus('No new photo selected.');
+      return;
+    }
+
+    if (!file.type.startsWith('image/')) {
+      photoInput.value = '';
+      setProfileStatus('Please choose an image file.', 'error');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      photoInput.value = '';
+      setProfileStatus('Image must be smaller than 5 MB.', 'error');
+      return;
+    }
+
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    previewUrl = URL.createObjectURL(file);
+    photoPreview.src = previewUrl;
+    setProfileStatus(`${file.name} selected. Click Save settings to upload.`, 'ready');
+  });
+
+  userDataForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = new FormData();
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
-    form.append('photo', document.getElementById('photo').files[0]);
-    /*
-    console.log(form);
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    */
-    updateSettings(form, 'data');
+    if (photoInput.files[0]) form.append('photo', photoInput.files[0]);
+
+    profileSubmit.disabled = true;
+    profileSubmit.textContent = 'Saving...';
+    setProfileStatus(
+      photoInput.files[0] ? 'Uploading your photo...' : 'Saving your settings...',
+      'loading',
+    );
+
+    const updated = await updateSettings(form, 'data');
+    profileSubmit.disabled = false;
+    profileSubmit.textContent = 'Save settings';
+
+    if (updated) {
+      setProfileStatus('Profile updated successfully.', 'success');
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+    } else {
+      setProfileStatus(
+        'Profile update failed. Check the error message and try again.',
+        'error',
+      );
+    }
   });
+}
 
 if (userPasswordForm)
   userPasswordForm.addEventListener('submit', async (e) => {

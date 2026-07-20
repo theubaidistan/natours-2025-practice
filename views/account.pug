@@ -45,9 +45,10 @@ block content
               img.form__user-photo(src=accountPhoto, alt='User photo')
               input.form__upload(type='file',accept='image/*',id='photo',name='photo')
               label(for='photo') Choose new photo
+            p.form__status.form__status--neutral(data-profile-status, role='status', aria-live='polite') No new photo selected.
 
             .form__group.right
-              button.btn.btn--small.btn--green Save settings
+              button.btn.btn--small.btn--green(type='submit', data-profile-submit) Save settings
         .line &nbsp;
         .user-view__form-container
           h2.heading-secondary.ma-bt-md Password change

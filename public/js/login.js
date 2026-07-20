@@ -64,9 +64,17 @@ export const logout = async () => {
       // url: 'http://127.0.0.1:3000/api/v1/users/logout',
       url: '/api/v1/users/logout',
     });
-    if (res.data.status === 'success') location.reload(true);
+    if (res.data.status === 'success') {
+      window.location.assign('/login');
+      return true;
+    }
+
+    return false;
   } catch (err) {
-    console.log(err.response);
-    showAlert('error', 'Error logging out! Try Again.');
+    showAlert(
+      'error',
+      err.response?.data?.message || 'Error logging out! Try again.',
+    );
+    return false;
   }
 };

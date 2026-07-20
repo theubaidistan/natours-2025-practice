@@ -52,7 +52,22 @@ if (signupForm) {
   });
 }
 
-if (logOutBtn) logOutBtn.addEventListener('click', logout);
+if (logOutBtn)
+  logOutBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    if (logOutBtn.dataset.loggingOut === 'true') return;
+
+    logOutBtn.dataset.loggingOut = 'true';
+    logOutBtn.textContent = 'Logging out...';
+    logOutBtn.setAttribute('aria-disabled', 'true');
+
+    const loggedOut = await logout();
+    if (!loggedOut) {
+      delete logOutBtn.dataset.loggingOut;
+      logOutBtn.textContent = 'Log out';
+      logOutBtn.removeAttribute('aria-disabled');
+    }
+  });
 
 if (userDataForm) {
   const photoInput = document.getElementById('photo');

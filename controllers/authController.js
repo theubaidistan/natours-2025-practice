@@ -41,9 +41,9 @@ const createSendToken = (user, statusCode, req, res) => {
     // secure:
     //   process.env.NODE_ENV === 'production' &&
     //   (req.secure || req.headers['x-forwarded-proto'] === 'https'),
-    secure:
-      process.env.NODE_ENV === 'development' &&
-      (req.secure || req.headers['x-forwarded-proto'] === 'https'),
+    secure: process.env.NODE_ENV === 'development',
+    sameSite: 'lax',
+    path: '/',
   });
 
   // Remove password from output
@@ -166,11 +166,11 @@ exports.logout = (req, res) => {
 */
 
 exports.logout = (req, res) => {
-  res.clearCookie('jwt', 'loggedout', {
+  res.clearCookie('jwt', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
     secure: process.env.NODE_ENV === 'development',
-    sameSite: 'none',
+    sameSite: 'lax',
     path: '/',
   });
 

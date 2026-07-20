@@ -96,15 +96,15 @@ if (bookBtn)
     bookTour(tourId);
   });
 
-if (reviewForm)
-  reviewForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const { tourId } = reviewForm.dataset;
-    const review = document.getElementById('review-text').value;
-    const rating = document.getElementById('review-rating').value;
+// if (reviewForm)
+//   reviewForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     const { tourId } = reviewForm.dataset;
+//     const review = document.getElementById('review-text').value;
+//     const rating = document.getElementById('review-rating').value;
 
-    createReview(tourId, review, rating);
-  });
+//     createReview(tourId, review, rating);
+//   });
 
 const alertMessage = document.querySelector('body').dataset.alert;
 if (alertMessage) showAlert('success', alertMessage, 20);

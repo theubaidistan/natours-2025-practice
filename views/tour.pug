@@ -79,32 +79,6 @@ block content
   section.section-map
     #map(data-locations=`${JSON.stringify(tour.locations)}`)
 
-  section.section-reviews
-    .reviews
-      each review in tour.reviews
-        +reviewCard(review)
-    if user
-      form.form.form--review(data-tour-id=tour.id)
-        h3.heading-tertiary Share your experience
-        .form__group
-          label.form__label(for='review-rating') Rating
-          select#review-rating.form__input(name='rating', required)
-            option(value='') Choose a rating
-            option(value='5') 5 - Excellent
-            option(value='4') 4 - Great
-            option(value='3') 3 - Good
-            option(value='2') 2 - Fair
-            option(value='1') 1 - Poor
-        .form__group
-          label.form__label(for='review-text') Your review
-          textarea#review-text.form__input(name='review', rows='5', maxlength='500', required, placeholder='Tell other travelers about this tour')
-        button.btn.btn--green(type='submit') Submit review
-    else
-      p.reviews__login Please
-        a(href='/login') log in
-        |  to share your experience.
-
-
   section.section-cta
     .cta
       .cta__img.cta__img--logo

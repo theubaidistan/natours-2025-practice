@@ -1,7 +1,7 @@
 const Review = require('../models/reviewModel');
 const Booking = require('../models/bookingModel');
 const factory = require('./handlerFactory');
-const catchAsync = require('../utils/catchAsync');
+// const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.setTourIds = (req, res, next) => {
@@ -14,31 +14,32 @@ exports.setTourIds = (req, res, next) => {
 
 exports.getAllReviews = factory.getAll(Review);
 exports.getReview = factory.getOne(Review);
-exports.createReview = catchAsync(async (req, res, next) => {
-  const booking = await Booking.findOne({
-    tour: req.body.tour,
-    user: req.user.id,
-  });
+exports.createReview = factory.createOne(Review);
+// exports.createReview = catchAsync(async (req, res, next) => {
+//   const booking = await Booking.findOne({
+//     tour: req.body.tour,
+//     user: req.user.id,
+//   });
 
-  if (!booking) {
-    return next(
-      new AppError('You can only review tours you have booked.', 403),
-    );
-  }
+//   if (!booking) {
+//     return next(
+//       new AppError('You can only review tours you have booked.', 403),
+//     );
+//   }
 
-  const review = await Review.create({
-    review: req.body.review,
-    rating: req.body.rating,
-    tour: req.body.tour,
-    user: req.user.id,
-  });
+//   const review = await Review.create({
+//     review: req.body.review,
+//     rating: req.body.rating,
+//     tour: req.body.tour,
+//     user: req.user.id,
+//   });
 
-  res.status(201).json({
-    status: 'success',
-    data: {
-      data: review,
-    },
-  });
-});
+//   res.status(201).json({
+//     status: 'success',
+//     data: {
+//       data: review,
+//     },
+//   });
+// });
 exports.updateReview = factory.updateOne(Review);
 exports.deleteReview = factory.deleteOne(Review);

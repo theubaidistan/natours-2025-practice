@@ -1238,6 +1238,17 @@ body {
   border-radius: 5px;
 }
 
+.form__footer {
+  margin: 2.5rem 0 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.form__footer a {
+  color: #55c57a;
+  font-weight: 700;
+}
+
 .form__input {
   display: block;
   font-family: inherit;

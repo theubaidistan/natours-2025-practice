@@ -40,6 +40,15 @@ exports.uploadUserPhoto = upload.single('photo');
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
+  if (!cloudinary.isConfigured) {
+    return next(
+      new AppError(
+        'Profile image storage is not configured. Add the Cloudinary environment variables in the deployment settings.',
+        503,
+      ),
+    );
+  }
+
   const result = await new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       {
@@ -64,6 +73,11 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     );
 
     uploadStream.end(req.file.buffer);
+  }).catch(() => {
+    throw new AppError(
+      'Profile image upload failed. Please try again in a moment.',
+      502,
+    );
   });
 
   req.body.photo = result.secure_url;

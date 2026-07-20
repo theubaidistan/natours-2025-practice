@@ -20,7 +20,11 @@ export const updateData = async (name, email) => {
       showAlert('success', 'Data updated successully!');
     }
   } catch (err) {
-    showAlert('error', err.response.data.message);
+    showAlert(
+      'error',
+      err.response?.data?.message ||
+        'Unable to update your settings. Please try again.',
+    );
   }
 };
 */

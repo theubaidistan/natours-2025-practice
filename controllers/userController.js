@@ -1,5 +1,5 @@
 const multer = require('multer');
-const sharp = require('sharp');
+const cloudinary = require('../utils/cloudinary');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -30,6 +30,9 @@ const multerFilter = (req, file, cb) => {
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
 });
 
 exports.uploadUserPhoto = upload.single('photo');
@@ -37,13 +40,34 @@ exports.uploadUserPhoto = upload.single('photo');
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
-  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+  const result = await new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: 'natours/users',
+        public_id: `user-${req.user.id}`,
+        overwrite: true,
+        invalidate: true,
+        resource_type: 'image',
+        transformation: [
+          {
+            width: 500,
+            height: 500,
+            crop: 'fill',
+            gravity: 'face',
+          },
+        ],
+      },
+      (error, uploadResult) => {
+        if (error) return reject(error);
+        resolve(uploadResult);
+      },
+    );
 
-  await sharp(req.file.buffer)
-    .resize(500, 500)
-    .toFormat('jpeg')
-    .jpeg({ quality: 90 })
-    .toFile(`public/img/users/${req.file.filename}`);
+    uploadStream.end(req.file.buffer);
+  });
+
+  req.body.photo = result.secure_url;
+  req.body.photoPublicId = result.public_id;
 
   next();
 });
@@ -77,7 +101,10 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 
   //^ 2) Filtered out unwanted fields names that are not allowed to be updated
   const filteredBody = filterObj(req.body, 'name', 'email');
-  if (req.file) filteredBody.photo = req.file.filename;
+  if (req.file) {
+    filteredBody.photo = req.body.photo;
+    filteredBody.photoPublicId = req.body.photoPublicId;
+  }
 
   //* 3) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {

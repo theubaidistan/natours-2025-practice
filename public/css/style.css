@@ -670,6 +670,7 @@ body {
   display: flex;
 }
 
+/* 
 .form--review {
   margin: 4rem auto 0;
   max-width: 55rem;
@@ -689,6 +690,11 @@ body {
 }
 
 .reviews__login a,
+.billing__row a {
+  color: #55c57a;
+  font-weight: 700;
+} */
+
 .billing__row a {
   color: #55c57a;
   font-weight: 700;

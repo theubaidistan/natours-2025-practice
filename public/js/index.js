@@ -4,7 +4,7 @@ import { displayMap } from './mapbox';
 import { login, logout, signup } from './login';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
-import { createReview } from './review';
+// import { createReview } from './review';
 import { showAlert } from './alerts';
 
 // DOM ELEMENTS
@@ -15,7 +15,7 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
-const reviewForm = document.querySelector('.form--review');
+// const reviewForm = document.querySelector('.form--review');
 
 // VALUES
 

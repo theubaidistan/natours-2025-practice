@@ -61,6 +61,11 @@ if (userDataForm) {
   const profileSubmit = document.querySelector('[data-profile-submit]');
   let previewUrl;
 
+  const getPhotoUrl = (photo) =>
+    photo && photo.startsWith('http')
+      ? photo
+      : `/img/users/${photo || 'default.jpg'}`;
+
   const setProfileStatus = (message, type = 'neutral') => {
     profileStatus.textContent = message;
     profileStatus.className = `form__status form__status--${type}`;
@@ -105,13 +110,24 @@ if (userDataForm) {
       'loading',
     );
 
-    const updated = await updateSettings(form, 'data');
+    const updatedUser = await updateSettings(form, 'data');
     profileSubmit.disabled = false;
     profileSubmit.textContent = 'Save settings';
 
-    if (updated) {
+    if (updatedUser) {
+      if (updatedUser.photo) {
+        const updatedPhotoUrl = getPhotoUrl(updatedUser.photo);
+        document
+          .querySelectorAll('.form__user-photo, .nav__user-img')
+          .forEach((image) => {
+            image.src = updatedPhotoUrl;
+          });
+      }
+
       setProfileStatus('Profile updated successfully.', 'success');
       if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = undefined;
+      photoInput.value = '';
     } else {
       setProfileStatus(
         'Profile update failed. Check the error message and try again.',

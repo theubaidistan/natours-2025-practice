@@ -54,7 +54,7 @@ export const updateSettings = async (data, type) => {
 
     if (res.data.status === 'success') {
       showAlert('success', `${type.toUpperCase()} updated successfully!`);
-      return true;
+      return res.data.data?.user || true;
     }
 
     return false;

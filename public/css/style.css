@@ -728,6 +728,41 @@ body {
   color: #55c57a;
   font-weight: 700;
 }
+
+.my-reviews {
+  display: grid;
+  gap: 2rem;
+}
+
+.my-review {
+  padding: 2.5rem;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
+
+.my-review__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.my-review__tour {
+  color: #55c57a;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.my-review__date {
+  color: #777;
+  font-size: 1.3rem;
+}
+
+.my-review__text {
+  margin: 1.5rem 0 0;
+  font-size: 1.5rem;
+  font-style: italic;
+}
 .reviews__star {
   height: 2rem;
   width: 2rem;

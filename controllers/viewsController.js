@@ -2,6 +2,7 @@ const slugify = require('slugify');
 const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
+const Review = require('../models/reviewModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
@@ -87,6 +88,26 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   res.status(200).render('overview', {
     title: 'My Tours',
     tours,
+  });
+});
+
+exports.getMyReviews = catchAsync(async (req, res, next) => {
+  const reviews = await Review.find({ user: req.user.id })
+    .populate({
+      path: 'tour',
+      select: 'name slug',
+    })
+    .sort('-createdAt');
+
+  reviews.forEach((review) => {
+    if (review.tour && !review.tour.slug && review.tour.name) {
+      review.tour.slug = slugify(review.tour.name, { lower: true });
+    }
+  });
+
+  res.status(200).render('myReviews', {
+    title: 'My reviews',
+    reviews,
   });
 });
 

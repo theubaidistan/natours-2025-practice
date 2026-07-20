@@ -32,7 +32,7 @@ block content
                 span Status
               each booking in bookings
                 .billing__row
-                  if booking.tour
+                  if booking.tour && booking.tour.slug
                     a(href=`/tour/${booking.tour.slug}`)=booking.tour.name
                   else
                     span Tour unavailable

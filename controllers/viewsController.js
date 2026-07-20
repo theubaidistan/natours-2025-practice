@@ -1,8 +1,18 @@
+const slugify = require('slugify');
 const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+
+const ensureTourSlugs = (tours) => {
+  tours.forEach((tour) => {
+    if (tour && !tour.slug && tour.name) {
+      tour.slug = slugify(tour.name, { lower: true });
+    }
+  });
+  return tours;
+};
 
 exports.alerts = (req, res, next) => {
   const { alert } = req.query;
@@ -14,7 +24,7 @@ exports.alerts = (req, res, next) => {
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   //* 1) Get tour data from collection
-  const tours = await Tour.find();
+  const tours = ensureTourSlugs(await Tour.find());
 
   //* 2) Build template
 
@@ -27,6 +37,10 @@ exports.getOverview = catchAsync(async (req, res, next) => {
 });
 
 exports.getTour = catchAsync(async (req, res, next) => {
+  if (!req.params.slug || req.params.slug === 'undefined') {
+    return res.redirect('/');
+  }
+
   //* 1) Get the data, for the requested tour (including reviews and guides)
   const tour = await Tour.findOne({ slug: req.params.slug }).populate({
     path: 'reviews',
@@ -68,7 +82,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   const bookings = await Booking.find({ user: req.user.id });
   // 2) Find tours with the returned IDs
   const tourIDs = bookings.map((el) => el.tour);
-  const tours = await Tour.find({ _id: { $in: tourIDs } });
+  const tours = ensureTourSlugs(await Tour.find({ _id: { $in: tourIDs } }));
 
   res.status(200).render('overview', {
     title: 'My Tours',
@@ -83,6 +97,12 @@ exports.getBilling = catchAsync(async (req, res, next) => {
       select: 'name slug',
     })
     .sort('-createdAt');
+
+  bookings.forEach((booking) => {
+    if (booking.tour && !booking.tour.slug && booking.tour.name) {
+      booking.tour.slug = slugify(booking.tour.name, { lower: true });
+    }
+  });
 
   const totalSpent = bookings.reduce(
     (total, booking) => total + booking.price,

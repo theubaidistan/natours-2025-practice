@@ -41,7 +41,9 @@ const createSendToken = (user, statusCode, req, res) => {
     // secure:
     //   process.env.NODE_ENV === 'production' &&
     //   (req.secure || req.headers['x-forwarded-proto'] === 'https'),
-    secure: process.env.NODE_ENV === 'development',
+    secure:
+      process.env.NODE_ENV === 'development' ||
+      process.env.NODE_ENV === 'production',
     sameSite: 'none',
     path: '/',
   });
@@ -169,7 +171,9 @@ exports.logout = (req, res) => {
   res.clearCookie('jwt', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'development',
+    secure:
+      process.env.NODE_ENV === 'development' ||
+      process.env.NODE_ENV === 'production',
     sameSite: 'none',
     path: '/',
   });

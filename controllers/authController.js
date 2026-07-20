@@ -167,6 +167,7 @@ exports.logout = (req, res) => {
 };
 */
 
+/*
 exports.logout = (req, res) => {
   res.clearCookie('jwt', {
     expires: new Date(Date.now() + 10 * 1000),
@@ -181,6 +182,18 @@ exports.logout = (req, res) => {
   res.status(200).json({
     status: 'success',
   });
+};
+*/
+
+exports.logout = (req, res) => {
+  res.clearCookie('jwt', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    path: '/',
+  });
+  res.set('Cache-Control', 'no-store'); // see bug #2 below
+  res.status(200).json({ status: 'success' });
 };
 
 exports.protect = catchAsync(async (req, res, next) => {

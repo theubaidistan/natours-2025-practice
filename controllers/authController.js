@@ -42,7 +42,7 @@ const createSendToken = (user, statusCode, req, res) => {
     //   process.env.NODE_ENV === 'production' &&
     //   (req.secure || req.headers['x-forwarded-proto'] === 'https'),
     secure: process.env.NODE_ENV === 'development',
-    sameSite: 'lax',
+    sameSite: 'none',
     path: '/',
   });
 
@@ -170,7 +170,7 @@ exports.logout = (req, res) => {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
     secure: process.env.NODE_ENV === 'development',
-    sameSite: 'lax',
+    sameSite: 'none',
     path: '/',
   });
 

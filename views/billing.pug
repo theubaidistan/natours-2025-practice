@@ -1,0 +1,44 @@
+extends base
+
+//- Reuse the account navigation pattern on the billing page.
+mixin navItem(link,text,icon,active)
+  li(class=`${active?'side-nav--active':''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`/img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings')
+          +navItem('/my-tours', 'My bookings', 'briefcase')
+          +navItem('/billing', 'Billing', 'credit-card', true)
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Billing history
+          p.billing__summary Total spent: 
+            strong $#{totalSpent.toFixed(2)}
+
+          if bookings.length
+            .billing__table
+              .billing__row.billing__row--header
+                span Tour
+                span Date
+                span Amount
+                span Status
+              each booking in bookings
+                .billing__row
+                  if booking.tour
+                    a(href=`/tour/${booking.tour.slug}`)=booking.tour.name
+                  else
+                    span Tour unavailable
+                  span=booking.createdAt.toLocaleDateString()
+                  span $#{booking.price.toFixed(2)}
+                  span.billing__status=booking.paid ? 'Paid' : 'Pending'
+          else
+            p You have no billing records yet.
+            a.btn.btn--green(href='/') Explore tours

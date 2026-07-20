@@ -30,6 +30,7 @@ router.get(
   authController.protect,
   viewsController.getMyTours,
 );
+router.get('/billing', authController.protect, viewsController.getBilling);
 
 router.post(
   '/submit-user-data',

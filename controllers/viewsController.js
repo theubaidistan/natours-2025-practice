@@ -76,6 +76,26 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getBilling = catchAsync(async (req, res, next) => {
+  const bookings = await Booking.find({ user: req.user.id })
+    .populate({
+      path: 'tour',
+      select: 'name slug',
+    })
+    .sort('-createdAt');
+
+  const totalSpent = bookings.reduce(
+    (total, booking) => total + booking.price,
+    0,
+  );
+
+  res.status(200).render('billing', {
+    title: 'Billing history',
+    bookings,
+    totalSpent,
+  });
+});
+
 exports.updateUserData = catchAsync(async (req, res, next) => {
   // console.log('UPDATING USER', req.body);
   const updatedUser = await User.findByIdAndUpdate(

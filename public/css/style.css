@@ -669,6 +669,59 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+
+.form--review {
+  margin: 4rem auto 0;
+  max-width: 55rem;
+  padding: 3rem;
+  background-color: #fff;
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+}
+
+.form--review textarea {
+  resize: vertical;
+}
+
+.reviews__login {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.reviews__login a,
+.billing__row a {
+  color: #55c57a;
+  font-weight: 700;
+}
+
+.billing__summary {
+  font-size: 1.7rem;
+  margin-bottom: 2.5rem;
+}
+
+.billing__table {
+  font-size: 1.5rem;
+}
+
+.billing__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.billing__row--header {
+  font-weight: 700;
+  color: #777;
+  border-bottom: 2px solid #55c57a;
+}
+
+.billing__status {
+  color: #55c57a;
+  font-weight: 700;
+}
 .reviews__star {
   height: 2rem;
   width: 2rem;

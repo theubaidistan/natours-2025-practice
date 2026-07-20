@@ -83,6 +83,25 @@ block content
     .reviews
       each review in tour.reviews
         +reviewCard(review) 
+    if user
+      form.form.form--review(data-tour-id=tour.id)
+        h3.heading-tertiary Share your experience
+        .form__group
+          label.form__label Rating
+          .star-rating(role='radiogroup', aria-label='Tour rating')
+            each star in [1,2,3,4,5]
+              input.star-rating__input(type='radio', name='rating', id=`rating-${star}`, value=star, required)
+              label.star-rating__label(for=`rating-${star}`, aria-label=`${star} stars`)
+                svg.reviews__star
+                  use(xlink:href='/img/icons.svg#icon-star')
+        .form__group
+          label.form__label(for='review-text') Your review
+          textarea#review-text.form__input(name='review', rows='5', maxlength='500', required, placeholder='Tell other travelers about this tour')
+        button.btn.btn--green(type='submit') Submit review
+    else
+      p.reviews__login Please
+        a(href='/login') log in
+        |  to share your experience.
 
   section.section-cta
     .cta

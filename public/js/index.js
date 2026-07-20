@@ -4,7 +4,7 @@ import { displayMap } from './mapbox';
 import { login, logout, signup } from './login';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
-// import { createReview } from './review';
+import { createReview } from './review';
 import { showAlert } from './alerts';
 
 // DOM ELEMENTS
@@ -15,6 +15,7 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
+const reviewForm = document.querySelector('.form--review');
 
 // VALUES
 
@@ -94,6 +95,33 @@ if (bookBtn)
     const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
+
+if (reviewForm) {
+  const ratingInputs = reviewForm.querySelectorAll('.star-rating__input');
+  const ratingLabels = reviewForm.querySelectorAll('.star-rating__label');
+
+  ratingInputs.forEach((input, index) => {
+    input.addEventListener('change', () => {
+      ratingLabels.forEach((label, labelIndex) => {
+        label.classList.toggle('is-selected', labelIndex <= index);
+      });
+    });
+  });
+
+  reviewForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const { tourId } = reviewForm.dataset;
+    const review = document.getElementById('review-text').value;
+    const rating = reviewForm.querySelector('input[name="rating"]:checked');
+
+    if (!rating) {
+      showAlert('error', 'Please choose a rating.');
+      return;
+    }
+
+    createReview(tourId, review, rating.value);
+  });
+}
 
 const alertMessage = document.querySelector('body').dataset.alert;
 if (alertMessage) showAlert('success', alertMessage, 20);

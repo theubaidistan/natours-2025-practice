@@ -670,6 +670,55 @@ body {
   display: flex;
 }
 
+.form--review {
+  margin: 4rem auto 0;
+  max-width: 55rem;
+  padding: 3rem;
+  background-color: #fff;
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+}
+
+.form--review textarea {
+  resize: vertical;
+}
+
+.reviews__login {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.reviews__login a {
+  color: #55c57a;
+  font-weight: 700;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.star-rating__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.star-rating__label {
+  cursor: pointer;
+}
+
+.star-rating__label .reviews__star {
+  fill: #bbb;
+  transition: fill 0.2s ease;
+}
+
+.star-rating__label:hover .reviews__star,
+.star-rating__label.is-selected .reviews__star {
+  fill: #55c57a;
+}
+
 /* 
 .form--review {
   margin: 4rem auto 0;

@@ -73,9 +73,40 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     );
 
     uploadStream.end(req.file.buffer);
-  }).catch(() => {
+  }).catch((error) => {
+    const cloudinaryMessage = String(error.message || '');
+    const cloudinaryStatus = error.http_code || error.httpCode;
+
+    // eslint-disable-next-line no-console
+    console.error('CLOUDINARY_PROFILE_UPLOAD_FAILED', {
+      message: cloudinaryMessage,
+      status: cloudinaryStatus,
+      name: error.name,
+    });
+
+    if (
+      cloudinaryStatus === 401 ||
+      cloudinaryStatus === 403 ||
+      /api.?key|signature|credential|authentication/i.test(cloudinaryMessage)
+    ) {
+      throw new AppError(
+        'Cloudinary rejected the upload credentials. Verify the Cloudinary environment variables in Vercel.',
+        502,
+      );
+    }
+
+    if (
+      cloudinaryStatus === 400 ||
+      /invalid image|unsupported/i.test(cloudinaryMessage)
+    ) {
+      throw new AppError(
+        'Cloudinary rejected this image. Choose a valid JPG, PNG, or WEBP image smaller than 5 MB.',
+        400,
+      );
+    }
+
     throw new AppError(
-      'Profile image upload failed. Please try again in a moment.',
+      'Cloudinary could not process the image right now. Please try again.',
       502,
     );
   });

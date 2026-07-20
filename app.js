@@ -246,6 +246,7 @@ app.use((req, res, next) => {
       "style-src 'self' https://unpkg.com https://fonts.googleapis.com 'unsafe-inline'",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://r.stripe.com",
+      'https://res.cloudinary.com',
       "worker-src 'self' blob:",
       `connect-src ${connectSrc.join(' ')}`,
       "frame-src 'self' https://js.stripe.com https://hooks.stripe.com",

@@ -1,0 +1,40 @@
+extends base
+
+mixin navItem(link,text,icon,active)
+  li(class=`${active?'side-nav--active':''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`/img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings')
+          +navItem('/my-tours', 'My bookings', 'briefcase')
+          +navItem('/my-reviews', 'My reviews', 'star', true)
+          +navItem('/billing', 'Billing', 'credit-card')
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md My reviews
+          if reviews.length
+            .my-reviews
+              each review in reviews
+                article.my-review
+                  .my-review__header
+                    if review.tour && review.tour.slug
+                      a.my-review__tour(href=`/tour/${review.tour.slug}`)=review.tour.name
+                    else
+                      h3.my-review__tour Tour unavailable
+                    time.my-review__date(datetime=review.createdAt.toISOString())=review.createdAt.toLocaleDateString()
+                  .reviews__rating
+                    each star in [1,2,3,4,5]
+                      svg.reviews__star(class=`reviews__star--${review.rating >= star ? 'active' : 'inactive' }`)
+                        use(xlink:href='/img/icons.svg#icon-star')
+                  p.my-review__text=review.review
+          else
+            p You have not written any reviews yet.
+            a.btn.btn--green(href='/') Explore tours

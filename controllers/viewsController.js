@@ -1,0 +1,158 @@
+const slugify = require('slugify');
+const Tour = require('../models/tourModel');
+const User = require('../models/userModel');
+const Booking = require('../models/bookingModel');
+const Review = require('../models/reviewModel');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
+
+const ensureTourSlugs = (tours) => {
+  tours.forEach((tour) => {
+    if (tour && !tour.slug && tour.name) {
+      tour.slug = slugify(tour.name, { lower: true });
+    }
+  });
+  return tours;
+};
+
+exports.alerts = (req, res, next) => {
+  const { alert } = req.query;
+  if (alert === 'booking')
+    res.locals.alert =
+      "Your booking was successful! Plaese check your email for a confirmation. If your booking doesn't show up here immediately, please come back later.";
+  next();
+};
+
+exports.getOverview = catchAsync(async (req, res, next) => {
+  //* 1) Get tour data from collection
+  const tours = ensureTourSlugs(await Tour.find());
+
+  //* 2) Build template
+
+  //* 3) Render that template using data from 1)
+
+  res.status(200).render('overview', {
+    title: 'All Tours',
+    tours,
+  });
+});
+
+exports.getTour = catchAsync(async (req, res, next) => {
+  if (!req.params.slug || req.params.slug === 'undefined') {
+    return res.redirect('/');
+  }
+
+  //* 1) Get the data, for the requested tour (including reviews and guides)
+  const tour = await Tour.findOne({ slug: req.params.slug }).populate({
+    path: 'reviews',
+    fields: 'review rating user',
+  });
+
+  if (!tour) {
+    return next(new AppError('There is no tour with that name.', 404));
+  }
+
+  //* 2) Build Template
+  //* 3) Render Template using data from 1)
+  res.status(200).render('tour', {
+    title: `${tour.name} Tour`,
+    tour,
+  });
+});
+
+exports.getLoginForm = (req, res) => {
+  res.status(200).render('login', {
+    title: 'Login into your account',
+  });
+};
+
+exports.getSignupForm = (req, res) => {
+  res.status(200).render('signup', {
+    title: 'Create your account',
+  });
+};
+
+exports.getAccount = (req, res) => {
+  res.status(200).render('account', {
+    title: 'Your Account',
+  });
+};
+
+exports.getMyTours = catchAsync(async (req, res, next) => {
+  // 1) Find all bookings
+  const bookings = await Booking.find({ user: req.user.id });
+  // 2) Find tours with the returned IDs
+  const tourIDs = bookings.map((el) => el.tour);
+  const tours = ensureTourSlugs(await Tour.find({ _id: { $in: tourIDs } }));
+
+  res.status(200).render('overview', {
+    title: 'My Tours',
+    tours,
+  });
+});
+
+exports.getMyReviews = catchAsync(async (req, res, next) => {
+  const reviews = await Review.find({ user: req.user.id })
+    .populate({
+      path: 'tour',
+      select: 'name slug',
+    })
+    .sort('-createdAt');
+
+  reviews.forEach((review) => {
+    if (review.tour && !review.tour.slug && review.tour.name) {
+      review.tour.slug = slugify(review.tour.name, { lower: true });
+    }
+  });
+
+  res.status(200).render('myReviews', {
+    title: 'My reviews',
+    reviews,
+  });
+});
+
+exports.getBilling = catchAsync(async (req, res, next) => {
+  const bookings = await Booking.find({ user: req.user.id })
+    .populate({
+      path: 'tour',
+      select: 'name slug',
+    })
+    .sort('-createdAt');
+
+  bookings.forEach((booking) => {
+    if (booking.tour && !booking.tour.slug && booking.tour.name) {
+      booking.tour.slug = slugify(booking.tour.name, { lower: true });
+    }
+  });
+
+  const totalSpent = bookings.reduce(
+    (total, booking) => total + booking.price,
+    0,
+  );
+
+  res.status(200).render('billing', {
+    title: 'Billing history',
+    bookings,
+    totalSpent,
+  });
+});
+
+exports.updateUserData = catchAsync(async (req, res, next) => {
+  // console.log('UPDATING USER', req.body);
+  const updatedUser = await User.findByIdAndUpdate(
+    req.user.id,
+    {
+      name: req.body.name,
+      email: req.body.email,
+    },
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+
+  res.status(200).render('account', {
+    title: 'Your Account',
+    user: updatedUser,
+  });
+});

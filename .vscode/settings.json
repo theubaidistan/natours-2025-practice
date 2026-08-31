@@ -1,0 +1,12 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#1E1E1E",
+    "statusBar.debuggingBackground": "#1E1E1E",
+    "statusBar.noFolderBackground": "#1E1E1E",
+    "statussBar.prominentBackground": "#1E1E1E"
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": "",
+    "textMateRules": []
+  }
+}

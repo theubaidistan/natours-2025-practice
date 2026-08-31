@@ -162,6 +162,58 @@ map.on('load', () => {
 });
 */
 
+//-----------------------------------------------------------------------------------------------------
+// export const displayMap = (locations) => {
+//   const map = new maplibregl.Map({
+//     container: 'map',
+//     style:
+//       'https://api.maptiler.com/maps/streets-v2-light/style.json?key=74smMglJ38WzlurKax6F',
+//     scrollZoom: false,
+//   });
+
+//   // Ensure container has height
+//   document.getElementById('map').style.height = '600px';
+
+//   const bounds = new maplibregl.LngLatBounds();
+
+//   locations.forEach((loc) => {
+//     const lngLat = [loc.coordinates[0], loc.coordinates[1]];
+
+//     const el = document.createElement('div');
+//     el.className = 'marker';
+
+//     new maplibregl.Marker({
+//       element: el,
+//       anchor: 'bottom',
+//     })
+//       .setLngLat(lngLat)
+//       .addTo(map);
+
+//     new maplibregl.Popup({ offset: 30 })
+//       .setLngLat(lngLat)
+//       .setHTML(`<p>Day ${loc.day}: ${loc.description}</p>`)
+//       .addTo(map);
+
+//     bounds.extend(lngLat);
+//   });
+
+//   map.on('load', () => {
+//     console.log('Map loaded. Fitting bounds...');
+//     map.fitBounds(bounds, {
+//       padding: {
+//         top: 200,
+//         bottom: 150,
+//         left: 100,
+//         right: 100,
+//       },
+//     });
+//   });
+// };
+
+//--------------------------------------------------------------------------------------------------------------------
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
 export const displayMap = (locations) => {
   const map = new maplibregl.Map({
     container: 'map',
@@ -198,6 +250,7 @@ export const displayMap = (locations) => {
 
   map.on('load', () => {
     console.log('Map loaded. Fitting bounds...');
+
     map.fitBounds(bounds, {
       padding: {
         top: 200,

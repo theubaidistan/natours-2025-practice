@@ -203,6 +203,20 @@ STRIPE_WEBHOOK_SECRET=<your-stripe-webhook-secret>
 
 ---
 
+## 📚 API Documentation
+
+Interactive Postman collections covering the Natours REST API — every endpoint, request/response shape, and auth flow, ready to explore or fork.
+
+### 🧱 [Express: Let's Start Building the Natours API](https://documenter.getpostman.com/view/45895052/2sBYB1N8gY)
+
+A build-along collection that walks through standing up the Natours API from scratch with Express and Node.js. Covers structuring a RESTful API, wiring up routers and controllers, and assembling a scalable backend step by step — useful as a reference for the project's route/controller architecture.
+
+### 🗺️ [Natours — Explore Amazing Adventure Tours & Travel](https://documenter.getpostman.com/view/45895052/2sB3BBrCag)
+
+The full API reference for the live Natours platform: browsing tours and destinations, viewing tour details, prices and ratings, managing reviews, and completing bookings. Use this collection to try out real requests against the tours, users, reviews, and bookings endpoints described in the data model above.
+
+---
+
 ## 📁 Project Structure (Models)
 
 ```
